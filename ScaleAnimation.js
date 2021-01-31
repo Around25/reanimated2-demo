@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { TouchableWithoutFeedback } from 'react-native';
+import {TouchableWithoutFeedback} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -11,10 +10,9 @@ import Animated, {
   Extrapolate,
 } from 'react-native-reanimated';
 
+const TimeConfigurations = {duration: 50, easing: Easing.linear};
 
-const TimeConfigurations = { duration: 50, easing: Easing.linear };
-
-export const ScaleAnimation = ({ onPress, children, scaleTo, disabled }) => {
+export const ScaleAnimation = ({onPress, children, scaleTo, disabled}) => {
   const pressed = useSharedValue(false);
   const progress = useDerivedValue(() => {
     return pressed.value
@@ -30,7 +28,7 @@ export const ScaleAnimation = ({ onPress, children, scaleTo, disabled }) => {
     );
 
     return {
-      transform: [{ scale }],
+      transform: [{scale}],
     };
   });
 

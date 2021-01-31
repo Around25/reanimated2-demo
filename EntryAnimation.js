@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -11,12 +11,11 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-
-export const EntryAnimation = ({ children, index }) => {
+export const EntryAnimation = ({children, index}) => {
   const play = useSharedValue(false);
   const progress = useDerivedValue(() => {
     return play.value
-      ? withDelay(50 * (index ?? 0), withTiming(1, { duration: 350 }))
+      ? withDelay(50 * (index ?? 0), withTiming(1, {duration: 350}))
       : 0;
   });
 
@@ -31,7 +30,7 @@ export const EntryAnimation = ({ children, index }) => {
 
     return {
       opacity,
-      transform: [{ translateY }],
+      transform: [{translateY}],
     };
   });
 
