@@ -3,10 +3,7 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   useDerivedValue,
-  withSpring,
-  Easing,
   interpolate,
-  Extrapolate,
   withDelay,
   withTiming,
 } from 'react-native-reanimated';
@@ -25,7 +22,6 @@ export const EntryAnimation = ({children, index}) => {
 
   const animatedStyle = useAnimatedStyle(() => {
     const opacity = interpolate(progress.value, [0, 1], [0, 1]);
-
     const translateY = interpolate(progress.value, [0, 1], [100, 0]);
 
     return {

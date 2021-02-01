@@ -1,67 +1,55 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {View, SafeAreaView, StyleSheet, Text} from 'react-native';
 import {ScaleAnimation} from './ScaleAnimation';
 import {EntryAnimation} from './EntryAnimation';
 
-const App = () => {
-  const renderText = () => (
-    <View>
-      <Text style={{fontSize: 30}}>Button</Text>
+function Button({backgroundColor = 'tomato', children}) {
+  return (
+    <View
+      style={[
+        styles.button,
+        {
+          height: 80,
+          width: 250,
+          backgroundColor,
+        },
+      ]}>
+      <Text style={{fontSize: 30}}>{children}</Text>
     </View>
   );
+}
 
-  const renderContent = () => {
-    return <>{renderText()}</>;
-  };
+function Spacer() {
+  return <View style={{height: 50, width: 50}} />;
+}
 
+function App() {
   return (
-    <>
-      <SafeAreaView style={styles.mainContainer}>
-        <EntryAnimation index={1}>
-          <ScaleAnimation onPress={() => {}} disabled={false} scaleTo={0.97}>
-            <View
-              style={styles.button}
-              height={80}
-              width={250}
-              backgroundColor={'#7ab2c9'}>
-              {renderContent()}
-            </View>
-          </ScaleAnimation>
-        </EntryAnimation>
-        <EntryAnimation index={2}>
-          <ScaleAnimation onPress={() => {}} disabled={false} scaleTo={0.97}>
-            <View
-              style={styles.button}
-              height={80}
-              width={250}
-              backgroundColor={'#cb6442'}>
-              {renderContent()}
-            </View>
-          </ScaleAnimation>
-        </EntryAnimation>
-        <EntryAnimation index={3}>
-          <ScaleAnimation onPress={() => {}} disabled={false} scaleTo={0.97}>
-            <View
-              style={styles.button}
-              height={80}
-              width={250}
-              backgroundColor={'#e5cabb'}>
-              {renderContent()}
-            </View>
-          </ScaleAnimation>
-        </EntryAnimation>
-      </SafeAreaView>
-    </>
+    <SafeAreaView style={styles.mainContainer}>
+      <EntryAnimation index={1}>
+        <ScaleAnimation onPress={() => {}} disabled={false} scaleTo={0.97}>
+          <Button backgroundColor="#7ab2c9">Button</Button>
+        </ScaleAnimation>
+      </EntryAnimation>
+
+      <Spacer />
+
+      <EntryAnimation index={2}>
+        <ScaleAnimation onPress={() => {}} disabled={false} scaleTo={0.97}>
+          <Button backgroundColor="#cb6442">Button</Button>
+        </ScaleAnimation>
+      </EntryAnimation>
+
+      <Spacer />
+
+      <EntryAnimation index={3}>
+        <ScaleAnimation onPress={() => {}} disabled={false} scaleTo={0.97}>
+          <Button backgroundColor="#e5cabb">Button</Button>
+        </ScaleAnimation>
+      </EntryAnimation>
+    </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -70,7 +58,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    margin: 50,
     borderRadius: 25,
     flexDirection: 'row',
     justifyContent: 'center',
